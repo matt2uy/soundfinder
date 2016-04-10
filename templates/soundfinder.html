@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+  <dl>
+    <div class="container">
+      <br/>
+
+	   	<!-- fill the input textbox when buttons are clicked -->
+		<script> 
+			function moveNumbers(num) { 
+		    	var txt=document.getElementById("expression_input").value; 
+		    	txt=txt + num; 
+		    	document.getElementById("expression_input").value=txt; 
+		    } 
+		</script>
+
+      <div class="row">
+        <div class="col-md-6">
+	   		<div class="form group">
+	   		<!-- expression input box -->
+
+	   		
+	   		<dd><textarea name=text class="form-control" rows="4" id="expression_input" padding="4px" placeholder="Type the expression here"></textarea>
+            <dd>
+
+	   		<!-- expression output box -->
+			<div class="well well-sm" id="question_text">
+			{{answer_text|safe}}
+			</div>
+
+		
+		<!-- calculator buttons -->
+		<div>
+		  <button type="button" class="btn btn-primary" value="7" onclick="moveNumbers(this.value)">7</button>
+		  <button type="button" class="btn btn-primary" value="8" onclick="moveNumbers(this.value)">8</button>
+		  <button type="button" class="btn btn-primary" value="9" onclick="moveNumbers(this.value)">9</button>
+		  <button type="button" class="btn btn-primary" value="+" onclick="moveNumbers(this.value)">+</button>
+		</div>
+
+
+		<div>
+		  <button type="button" class="btn btn-primary" value="4" onclick="moveNumbers(this.value)">4</button>
+		  <button type="button" class="btn btn-primary" value="5" onclick="moveNumbers(this.value)">5</button>
+		  <button type="button" class="btn btn-primary" value="6" onclick="moveNumbers(this.value)">6</button>
+		  <button type="button" class="btn btn-primary" value="-" onclick="moveNumbers(this.value)">-</button>
+		</div>
+
+		<div>
+		  <button type="button" class="btn btn-primary" value="1" onclick="moveNumbers(this.value)">1</button>
+		  <button type="button" class="btn btn-primary" value="2" onclick="moveNumbers(this.value)">2</button>
+		  <button type="button" class="btn btn-primary" value="3" onclick="moveNumbers(this.value)">3</button>
+		  <button type="submit" class="btn btn-primary"%>=</button>
+		</div>
+
+
+	   </div>
+        </div>
+    </div>
+    <!-- /.container -->
+  </dl>
+</form>
+{% endblock %}
